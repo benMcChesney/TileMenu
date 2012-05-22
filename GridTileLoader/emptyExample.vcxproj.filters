@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\testApp.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp">
+      <Filter>ofxXmlSettings\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp">
+      <Filter>ofxXmlSettings\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp">
+      <Filter>ofxXmlSettings\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp">
+      <Filter>ofxXmlSettings\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TileContent.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTweenzor\src\Tween.cpp">
+      <Filter>ofxTweenzor\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTweenzor\src\Tweenzor.cpp">
+      <Filter>ofxTweenzor\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\testApp.h" />
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h">
+      <Filter>ofxXmlSettings\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h">
+      <Filter>ofxXmlSettings\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TileContent.h" />
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\ofxTweenzor.h">
+      <Filter>ofxTweenzor\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\Tween.h">
+      <Filter>ofxTweenzor\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\TweenEvent.h">
+      <Filter>ofxTweenzor\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\TweenFunctions.h">
+      <Filter>ofxTweenzor\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\TweenSelector.h">
+      <Filter>ofxTweenzor\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\Tweenzor.h">
+      <Filter>ofxTweenzor\src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="ofxXmlSettings">
+      <UniqueIdentifier>{0eb47b80-18e2-4fa9-bab7-b54ca574a774}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ofxXmlSettings\src">
+      <UniqueIdentifier>{9c29e221-58c3-42cf-afb6-c54192960a92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ofxXmlSettings\libs">
+      <UniqueIdentifier>{8ed9691c-756a-4393-be27-3b7bb2b0d7af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ofxTweenzor">
+      <UniqueIdentifier>{fabe1fea-80d3-441c-9356-cbce88940c25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ofxTweenzor\src">
+      <UniqueIdentifier>{7636e34b-40de-4012-a5ab-e19575867c68}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
