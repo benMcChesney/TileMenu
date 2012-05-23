@@ -2,6 +2,7 @@
 
 
 #include "ofMain.h"
+#include "TileMenuGlobal.h"
 
 class TileContent
 {
@@ -33,4 +34,13 @@ class TileContent
 		void endRepulse( ) ; 
 
 		bool hitTest ( float x , float y ) ; 
+
+		ofImage image ; 
+		void loadImage( string path ) ; 
+
+		void selected ( ) ; 
+		void unselected ( ) ; 
+
+		bool bSelected ; 
+		float rotation ; 
 };

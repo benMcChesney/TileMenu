@@ -19,6 +19,7 @@
       <Filter>addons\ofxIisu\src</Filter>
     </ClCompile>
     <ClCompile Include="src\TileContent.cpp" />
+    <ClCompile Include="src\TileManager.cpp" />
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp">
       <Filter>addons\ofxXmlSettings\libs</Filter>
     </ClCompile>
@@ -31,7 +32,6 @@
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp">
       <Filter>addons\ofxXmlSettings\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\TileManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\testApp.h" />
@@ -76,6 +76,7 @@
     </ClInclude>
     <ClInclude Include="src\TileContent.h" />
     <ClInclude Include="src\TileManager.h" />
+    <ClInclude Include="src\TileMenuGlobal.h" />
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h">
       <Filter>addons\ofxXmlSettings\libs</Filter>
     </ClInclude>
@@ -100,13 +101,13 @@
       <UniqueIdentifier>{f570f2ba-4aa8-44b6-bc65-0dcd0b4036cb}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxXmlSettings">
-      <UniqueIdentifier>{7525e7f1-d7f6-4f13-ac25-e40f8e480f57}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxXmlSettings\libs">
-      <UniqueIdentifier>{34e3bf7b-fa41-445e-9107-66b04e42f7d0}</UniqueIdentifier>
+      <UniqueIdentifier>{1e41186c-6f1c-43b5-bd99-5a086fcf538d}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxXmlSettings\src">
-      <UniqueIdentifier>{81950da6-c77d-4e78-90cc-7de66e5ab307}</UniqueIdentifier>
+      <UniqueIdentifier>{7011298a-4c98-4f27-ac51-9a7bf0b8f6ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxXmlSettings\libs">
+      <UniqueIdentifier>{2ea8c5d0-3eb1-4056-a69a-68648c44c6c8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

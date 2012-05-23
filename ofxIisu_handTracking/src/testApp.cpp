@@ -11,12 +11,13 @@ enum POINTER_STATUS
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	
+
+#ifndef MOUSE_DEBUG
 	ofAddListener ( IisuEvents::Instance()->exitApplication , this , &testApp::exitEventHandler ) ; 
 
 	iisuServer = CloseIisuServer() ; 
 	iisuServer.setup() ; 
-
+#endif
 	
 	ofBackground ( 0 , 0 , 0 ) ; 
 	Tweenzor::init() ; 
@@ -25,11 +26,16 @@ void testApp::setup(){
 
 	hand = HandCursor() ; 
 	hand.setup( ) ; 
+
+#ifndef MOUSE_DEBUG
 	hand.iisu = &iisuServer ; 
+#endif
 
-	tileManager.setup( ) ; 
+	tileManager.setup( ) ;
 
+#ifndef MOUSE_DEBUG
 	ofAddListener( IisuEvents::Instance()->HAND_CLAMP_SELECTION , this , &testApp::handClampSelectionHandler ) ; 
+#endif
 }
 
 void testApp::handClampSelectionHandler ( int &args )
@@ -40,7 +46,7 @@ void testApp::handClampSelectionHandler ( int &args )
 	{
 		//we have a match!
 		tileManager.setNewTileActive( activeIndex ) ; 
-		tileManager.contents[tileManager.activeTileIndex]->color = ofColor( ofRandom(255) , ofRandom(255) , ofRandom(255) ) ; 
+		tileManager.contents[tileManager.activeTileIndex]->selected( ) ; //color = ofColor( ofRandom(255) , ofRandom(255) , ofRandom(255) ) ; 
 	}
 }
 
@@ -50,8 +56,16 @@ void testApp::update()
 	Tweenzor::update( ofGetElapsedTimeMillis() ) ; 
 	hand.updateIisu( ) ;
 	tileManager.update( ) ; 
+	hand.fingerCentroid = ofVec2f( mouseX , mouseY ) ; 
+
+#ifndef MOUSE_DEBUG
 	if ( hand.bTracked == true ) 
 		tileManager.input( hand.fingerCentroid.x , hand.fingerCentroid.y ) ; 
+#endif
+#ifdef MOUSE_DEBUG
+	tileManager.input ( mouseX , mouseY ) ; 
+#endif
+	
 }
 
 
@@ -72,6 +86,7 @@ void testApp::exitEventHandler ( int &exitCode )
 
 void testApp::exit( ) 
 {
+#ifndef MOUSE_DEBUG
 	cout << "testApp::exit" << endl ; 
 	// if we have iisu device
 	if ( iisuServer.m_device )
@@ -98,6 +113,7 @@ void testApp::exit( )
 	// finalize context
 	Context::Instance().finalize();
 	ofSleepMillis( 5000 ) ; 
+#endif
 }
 
 
@@ -118,7 +134,7 @@ void testApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-
+	handClampSelectionHandler( x ) ; 
 }
 
 //--------------------------------------------------------------

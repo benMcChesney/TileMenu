@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "TileContent.h"
 #include "ofxXmlSettings.h"
+#include "TileMenuGlobal.h"
 
 class TileManager
 {

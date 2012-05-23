@@ -4,12 +4,23 @@
 
 void TileContent::setup( ) 
 {
-	inactiveScale = 0.85f ; 
-	activeScale = 2.0f ; 
+	inactiveScale = 0.48f ; 
+	activeScale = 1.0f ; 
 	scale = inactiveScale ;
 	bHover = false ; 
 
-	repulseLength = 100.0f ; 
+	repulseLength = 115.0f ; 
+	bSelected = false ; 
+	rotation = 0.0f ; 
+}
+
+void TileContent::loadImage( string path ) 
+{
+	image.loadImage( path ) ; 
+	ofRectangle imgBounds = ofRectangle( 0 , 0 , image.width , image.height ) ; 
+	float cropX = (image.width/2 ) - ( bounds.width / 2 ) ; //( bounds.width /2 ) - (( image.width - bounds.width ) /2 ) ; 
+	float cropY =  (image.height/2 ) - ( bounds.height / 2 ) ;  //( bounds.height/2 ) - (( image.height - bounds.height ) / 2 ) ; 
+	image.crop( cropX , cropY , bounds.width , bounds.height ) ; 
 }
 
 void TileContent::setOrigin ( ) 
@@ -19,7 +30,7 @@ void TileContent::setOrigin ( )
 
 void TileContent::update( ) 
 {
-
+	//rotation = ofGetElapsedTimef() * 7.0f ; 
 }
 
 void TileContent::inputOver ( ) 
@@ -47,14 +58,41 @@ void TileContent::inputOut ( )
 //		cout << "input Out! bHover == true " << endl ; 
 }
 
+void TileContent::selected( ) 
+{
+	if ( bSelected == false )
+	{
+		bSelected = true ; 
+		Tweenzor::add ( &rotation, rotation , 180.0f , 0.0f , 0.65f , EASE_IN_OUT_QUAD ) ; 
+	}
+	if ( Tweenzor::getTween( &rotation ) == NULL ) 
+	{
+		unselected( ) ;
+	}
+}
+
+void TileContent::unselected( ) 
+{
+	if ( bSelected == true ) 
+	{
+		bSelected = false ; 
+		Tweenzor::add ( &rotation, rotation , 0.0f , 0.0f , 0.65f , EASE_IN_OUT_QUAD ) ;
+	}
+
+	
+}
+
 void TileContent::draw( ) 
 {
 	ofSetRectMode( OF_RECTMODE_CENTER ) ; 
-	ofSetColor( color ) ; 
+	ofSetColor( 255 , 255 , 255 , 255 ) ; 
 	ofPushMatrix() ; 
 		ofTranslate( bounds.x , bounds.y ) ; 
 		ofScale ( scale , scale ) ; 
-		ofRect( 0 , 0  , bounds.width , bounds.height ) ; 
+		ofRotateY( rotation ) ; 
+
+		image.draw( 0 , 0 ,  bounds.width , bounds.height ) ; 
+		//ofRect( 0 , 0  , bounds.width , bounds.height ) ; 
 	ofPopMatrix() ; 
 
 //	ofSetColor ( 0 , 255 , 255 ) ; 

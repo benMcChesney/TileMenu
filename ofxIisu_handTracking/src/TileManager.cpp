@@ -8,8 +8,9 @@ void TileManager::setup ( )
 
 void TileManager::setupFromXml( string xmlPath ) 
 {
-	tileXml.loadFile( xmlPath ) ; 
-
+	cout << "loading " << xmlPath << endl ; 
+	bool bResult = tileXml.loadFile( xmlPath ) ; 
+	cout << " result is : " << bResult << endl ; 
 	int numTags = tileXml.getNumTags( "tile" ) ; 
 	for ( int i = 0; i < numTags ; i++ ) 
 	{
@@ -18,11 +19,13 @@ void TileManager::setupFromXml( string xmlPath )
 		tile->setup( ) ; 
 		ofRectangle _bounds = ofRectangle( tileXml.getAttribute( "tile" , "x" , 0 , i ) , 
 										   tileXml.getAttribute( "tile" , "y" , 0 , i ) , 
-										   tileXml.getAttribute( "tile" , "width" , 5 , i ) , 
-										   tileXml.getAttribute( "tile" , "height" , 5 , i ) ) ; 
+										   tileXml.getAttribute( "tile" , "width" , 5 , i ) * 2.0f , 
+										   tileXml.getAttribute( "tile" , "height" , 5 , i ) * 2.0f ) ; 
 		tile->bounds = _bounds ; 
 		tile->setOrigin( ) ; 
 		tile->color = ofColor::fromHex( tileXml.getAttribute( "tile" , "hexColor" , 0 , i ) ) ; 
+		tile->loadImage( "images/food_"+ofToString(i+1)+".jpg" ) ; 
+		//tile->image.setAnchorPercent( 0.5 , 0.5 ) ; 
 		contents.push_back( tile ) ;
 	}
 }

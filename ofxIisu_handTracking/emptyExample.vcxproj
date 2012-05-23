@@ -149,6 +149,7 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     <ClInclude Include="src\testApp.h" />
     <ClInclude Include="src\TileContent.h" />
     <ClInclude Include="src\TileManager.h" />
+    <ClInclude Include="src\TileMenuGlobal.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\libs\openFrameworksCompiled\project\vs2010\openframeworksLib.vcxproj">
