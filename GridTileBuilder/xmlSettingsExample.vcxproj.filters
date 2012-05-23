@@ -24,7 +24,6 @@
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h">
       <Filter>addons\ofxXmlSettings\libs</Filter>
     </ClInclude>
-    <ClInclude Include="src\TileContainer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="addons">

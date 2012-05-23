@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CONFIG>
+  <OPTIONS>
+    <LOG_PATH>..\..\..\..\..\bin\log</LOG_PATH>
+    <LOG_TO_STANDARD_OUTPUT>1</LOG_TO_STANDARD_OUTPUT>
+  </OPTIONS>
+  <IISU_CONFIG_FILE>iisu_config.xml</IISU_CONFIG_FILE>
+  <IISU_BIN_DIR>..\..\..\..\..\bin</IISU_BIN_DIR>
+</CONFIG>CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+# Installation of the resource files
+
+INSTALL(FILES application.xml
+        DESTINATION ${PROJECT_NAME}/Resources)
+

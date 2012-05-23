@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\testApp.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTweenzor\src\Tween.cpp">
+      <Filter>addons\ofxTweenzor\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTweenzor\src\Tweenzor.cpp">
+      <Filter>addons\ofxTweenzor\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\helios_addons\ofxIisu\src\CloseIisuServer.cpp">
+      <Filter>addons\ofxIisu\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\helios_addons\ofxIisu\src\IisuServer.cpp">
+      <Filter>addons\ofxIisu\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\helios_addons\ofxIisu\src\HandCursor.cpp">
+      <Filter>addons\ofxIisu\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TileContent.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp">
+      <Filter>addons\ofxXmlSettings\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp">
+      <Filter>addons\ofxXmlSettings\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp">
+      <Filter>addons\ofxXmlSettings\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp">
+      <Filter>addons\ofxXmlSettings\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TileManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\testApp.h" />
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\ofxTweenzor.h">
+      <Filter>addons\ofxTweenzor\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\Tween.h">
+      <Filter>addons\ofxTweenzor\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\TweenEvent.h">
+      <Filter>addons\ofxTweenzor\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\TweenFunctions.h">
+      <Filter>addons\ofxTweenzor\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\TweenSelector.h">
+      <Filter>addons\ofxTweenzor\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\Tweenzor.h">
+      <Filter>addons\ofxTweenzor\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\helios_addons\ofxIisu\src\CloseIisuServer.h">
+      <Filter>addons\ofxIisu\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\helios_addons\ofxIisu\src\DepthCursor.h">
+      <Filter>addons\ofxIisu\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\helios_addons\ofxIisu\src\IisuEventArgs.h">
+      <Filter>addons\ofxIisu\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\helios_addons\ofxIisu\src\IisuEvents.h">
+      <Filter>addons\ofxIisu\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\helios_addons\ofxIisu\src\IisuServer.h">
+      <Filter>addons\ofxIisu\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\helios_addons\ofxIisu\src\ofxIisu.h">
+      <Filter>addons\ofxIisu\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\helios_addons\ofxIisu\src\HandCursor.h">
+      <Filter>addons\ofxIisu\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TileContent.h" />
+    <ClInclude Include="src\TileManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h">
+      <Filter>addons\ofxXmlSettings\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h">
+      <Filter>addons\ofxXmlSettings\src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="addons">
+      <UniqueIdentifier>{3c3e34e6-eb99-43f0-848b-924a9b58ebf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTweenzor">
+      <UniqueIdentifier>{5f01bdc7-469b-408f-8e0e-63cf43d8579e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTweenzor\src">
+      <UniqueIdentifier>{e11055ca-0a35-4f2a-81a1-6a62498a9aa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxIisu">
+      <UniqueIdentifier>{b5ba11a3-2a22-4a58-9e81-dfed6d4c94fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxIisu\src">
+      <UniqueIdentifier>{f570f2ba-4aa8-44b6-bc65-0dcd0b4036cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxXmlSettings">
+      <UniqueIdentifier>{7525e7f1-d7f6-4f13-ac25-e40f8e480f57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxXmlSettings\libs">
+      <UniqueIdentifier>{34e3bf7b-fa41-445e-9107-66b04e42f7d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxXmlSettings\src">
+      <UniqueIdentifier>{81950da6-c77d-4e78-90cc-7de66e5ab307}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

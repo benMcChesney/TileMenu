@@ -17,7 +17,12 @@ void testApp::setup(){
 void testApp::loadTileXml( ) 
 {
 	tiles.clear() ; 
-	xml.loadFile ( "settings.xml" ) ; 
+	xml.loadFile ( ofToDataPath( "settings.xml" ) ) ; 
+
+	string xmlString = "" ; 
+	xml.copyXmlToString ( xmlString ) ; 
+
+	cout << "loaded XML : " << endl << xmlString << endl; 
 
 	int numTags = xml.getNumTags( "tile" ) ; 
 	for ( int i = 0 ; i < numTags ; i++ ) 
@@ -49,8 +54,10 @@ void testApp::saveTileXml( )
 {
 	xml.clear() ; 
 
+	//cout << "saving tile XML! " << tiles.size() << endl ; 
 	for ( int i = 0 ; i < tiles.size() ; i++ ) 
 	{
+		//cout << "tile : " << i << endl ; 
 		int tagNum = xml.addTag( "tile" ) ; 
 		xml.setAttribute( "tile" , "hexColor" , tiles[i]->color.getHex() , tagNum ) ; 
 		xml.setAttribute( "tile" , "x" , tiles[i]->bounds.x , tagNum ) ; 
@@ -59,7 +66,8 @@ void testApp::saveTileXml( )
 		xml.setAttribute( "tile" , "height" , tiles[i]->bounds.height , tagNum ) ; 
 	}
 
-	xml.saveFile( "settings.xml" ) ; 
+	xml.saveFile( ofToDataPath( "settings.xml" ) ) ; 
+	
 }
 
 //--------------------------------------------------------------
@@ -89,7 +97,7 @@ void testApp::drawGUI( )
 
 	ofSetColor( 215 , 215 , 215 ) ; 
 	ofDrawBitmapString( ": SELECTED COLOR :" , 15 , h - 8 ) ; 
-	ofDrawBitmapString( ":  X , Y , WIDTH , HEIGHT :" , 160 , h - 8 ) ; 
+	ofDrawBitmapString( ": X , Y , WIDTH , HEIGHT :" , 160 , h - 8 ) ; 
 	ofDrawBitmapString( ": W A S D to nudge :" , 400 , h - 8 ) ; 
 	ofDrawBitmapString( ": N = new square  ::  BACKSPACE = delete square :" , 560 , h - 8 ) ; 
 	if ( selectedTile != NULL ) 
@@ -136,11 +144,14 @@ void testApp::keyPressed  (int key){
 	// 119 , 97 , 115 , 100 
 
 	//backspace 8 
-	cout << key << endl ; 
-	if ( selectedTile == NULL ) 
-		return ; 
-
+	cout << key << endl ;
+	if ( tiles.size() > 0 ) 
+	{
+		if ( selectedTile == NULL ) 
+			return ; 
+	}
 	//356 , 357 , 358 , 359
+	int increment = 4 ; 
 	switch ( key ) 
 	{
 		case 119 :
@@ -181,6 +192,11 @@ void testApp::keyPressed  (int key){
 
 		case 359 : 
 			selectedTile->bounds.height -= 1 ; 
+			break ;
+
+		case 'z':
+		case 'Z':
+			saveTileXml( ) ; 
 			break ; 
 	}
 }
@@ -243,4 +259,3 @@ void testApp::gotMessage(ofMessage msg){
 void testApp::dragEvent(ofDragInfo dragInfo){ 
 
 }
-
