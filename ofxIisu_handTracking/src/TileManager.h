@@ -4,6 +4,7 @@
 #include "TileContent.h"
 #include "ofxXmlSettings.h"
 #include "TileMenuGlobal.h"
+#include "Tweenzor.h"
 
 class TileManager
 {
@@ -27,5 +28,21 @@ class TileManager
 		void resetTiles ( ) ; 
 
 		int getIndexAtPoint ( float x , float y ) ; 
+
+		TileContent * selectedTile ; 
+
+		void setIndexAsSelected ( int index ) ; 
+		ofVec2f globalSelectedPoint ; 
+
+
+		float blackOutAlpha ; 
+
+		//Close Area
+		ofRectangle closeArea ; 
+
+
+		bool hitTest ( float x , float y , ofRectangle r ) ; 
+
+		void returnToMenu ( ) ; 
 
 };

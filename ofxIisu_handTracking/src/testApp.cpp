@@ -40,14 +40,39 @@ void testApp::setup(){
 
 void testApp::handClampSelectionHandler ( int &args )
 {
+	if ( !hand.bTracked ) return ;
 	cout << "HAND CLAMP HANDELED IN TEST APP!" << endl ; 
-	int activeIndex = tileManager.getIndexAtPoint( hand.fingerCentroid.x , hand.fingerCentroid.y ) ; 
-	if ( activeIndex > -1 ) 
+	//IF a node is active and selected ( zoom mode ) 
+	if ( tileManager.selectedTile != NULL ) 
 	{
-		//we have a match!
-		tileManager.setNewTileActive( activeIndex ) ; 
-		tileManager.contents[tileManager.activeTileIndex]->selected( ) ; //color = ofColor( ofRandom(255) , ofRandom(255) , ofRandom(255) ) ; 
+		cout << "Tile IS SELECTED" ; 
+		if ( tileManager.hitTest( hand.fingerCentroid.x , hand.fingerCentroid.y , tileManager.closeArea ) == true ) 
+		{
+			cout << " return to MENU! called " << endl ; 
+			tileManager.returnToMenu( ) ;
+			cout << "after returnToMenu( ) " << endl ; 
+		}
+		return ; 
 	}
+	//If on the general menu with hover states
+	else
+	{
+		cout << "selected tile IS NULL " << endl ; 
+		int activeIndex = tileManager.getIndexAtPoint( hand.fingerCentroid.x , hand.fingerCentroid.y ) ; 
+		cout << "getIndexAtPoint returned : " << activeIndex << endl ; 
+		if ( activeIndex > -1 ) 
+		{
+
+			//we have a match!
+			tileManager.setIndexAsSelected( activeIndex ) ; 
+			cout << "past setIndex as selected  " << activeIndex << endl ; 
+			/*
+		tileManager.setNewTileActive( activeIndex ) ; 
+		if ( tileManager.activeTileIndex > -1 ) 
+			tileManager.contents[tileManager.activeTileIndex]->selected( ) ; //color = ofColor( ofRandom(255) , ofRandom(255) , ofRandom(255) ) ; */
+		}
+	}
+	
 }
 
 //--------------------------------------------------------------
@@ -56,13 +81,14 @@ void testApp::update()
 	Tweenzor::update( ofGetElapsedTimeMillis() ) ; 
 	hand.updateIisu( ) ;
 	tileManager.update( ) ; 
-	hand.fingerCentroid = ofVec2f( mouseX , mouseY ) ; 
+	
 
 #ifndef MOUSE_DEBUG
 	if ( hand.bTracked == true ) 
 		tileManager.input( hand.fingerCentroid.x , hand.fingerCentroid.y ) ; 
 #endif
 #ifdef MOUSE_DEBUG
+	hand.fingerCentroid = ofVec2f( mouseX , mouseY ) ; 
 	tileManager.input ( mouseX , mouseY ) ; 
 #endif
 	

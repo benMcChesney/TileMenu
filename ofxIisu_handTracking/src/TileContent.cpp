@@ -12,6 +12,7 @@ void TileContent::setup( )
 	repulseLength = 115.0f ; 
 	bSelected = false ; 
 	rotation = 0.0f ; 
+	z = 0.0f ; 
 }
 
 void TileContent::loadImage( string path ) 
@@ -21,6 +22,8 @@ void TileContent::loadImage( string path )
 	float cropX = (image.width/2 ) - ( bounds.width / 2 ) ; //( bounds.width /2 ) - (( image.width - bounds.width ) /2 ) ; 
 	float cropY =  (image.height/2 ) - ( bounds.height / 2 ) ;  //( bounds.height/2 ) - (( image.height - bounds.height ) / 2 ) ; 
 	image.crop( cropX , cropY , bounds.width , bounds.height ) ; 
+
+	selectedRect = bounds ; 
 }
 
 void TileContent::setOrigin ( ) 
@@ -64,6 +67,7 @@ void TileContent::selected( )
 	{
 		bSelected = true ; 
 		Tweenzor::add ( &rotation, rotation , 180.0f , 0.0f , 0.65f , EASE_IN_OUT_QUAD ) ; 
+		Tweenzor::add( &selectedRect.height , selectedRect.height , bounds.height * 2 , 0.0f , 0.75 , EASE_OUT_QUAD ) ; 
 	}
 	if ( Tweenzor::getTween( &rotation ) == NULL ) 
 	{
@@ -75,29 +79,54 @@ void TileContent::unselected( )
 {
 	if ( bSelected == true ) 
 	{
-		bSelected = false ; 
+		//bSelected = false ; 
 		Tweenzor::add ( &rotation, rotation , 0.0f , 0.0f , 0.65f , EASE_IN_OUT_QUAD ) ;
+		Tweenzor::add( &selectedRect.height , selectedRect.height , bounds.height , 0.0f , 0.75 , EASE_OUT_QUAD ) ; 
+		Tweenzor::addCompleteListener( Tweenzor::getTween ( &selectedRect.height ) , this , &TileContent::unselectedComplete  ) ; 
+		Tweenzor::add( &bounds.x , bounds.x , origin.x , 0.65f , 0.75f , EASE_OUT_QUAD ) ; 
+		Tweenzor::add( &bounds.y , bounds.y , origin.y , 0.65f , 0.75f , EASE_OUT_QUAD ) ; 
 	}
+}
 
-	
+
+void TileContent::unselectedComplete ( float * args ) 
+{
+	bSelected = false ; 
 }
 
 void TileContent::draw( ) 
 {
 	ofSetRectMode( OF_RECTMODE_CENTER ) ; 
-	ofSetColor( 255 , 255 , 255 , 255 ) ; 
+
+	
 	ofPushMatrix() ; 
 		ofTranslate( bounds.x , bounds.y ) ; 
+
 		ofScale ( scale , scale ) ; 
 		ofRotateY( rotation ) ; 
 
+		ofSetColor( color ) ; 
+		//if ( bSelected ) 
+		ofSetRectMode( OF_RECTMODE_CORNER ) ; 
+		ofRect ( -selectedRect.width/2 , -bounds.height/2  , selectedRect.width , selectedRect.height ) ; 
+
+		ofSetRectMode( OF_RECTMODE_CENTER ) ; 
+		ofSetColor( 255 , 255 , 255 , 255 ) ; 
 		image.draw( 0 , 0 ,  bounds.width , bounds.height ) ; 
+		
+		
 		//ofRect( 0 , 0  , bounds.width , bounds.height ) ; 
 	ofPopMatrix() ; 
+
+	
+	ofSetRectMode( OF_RECTMODE_CENTER ) ; 
+	ofFill( ) ; 
+	ofSetColor ( 255 , 255 , 255 , 255 ) ; 
 
 //	ofSetColor ( 0 , 255 , 255 ) ; 
 //	ofCircle( origin, 25 ) ; 
 }
+
 
 bool TileContent::hitTest ( float _x , float _y )
 {

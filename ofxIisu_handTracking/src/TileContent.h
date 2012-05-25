@@ -33,6 +33,7 @@ class TileContent
 
 		void endRepulse( ) ; 
 
+		int tileIndex ; 
 		bool hitTest ( float x , float y ) ; 
 
 		ofImage image ; 
@@ -40,7 +41,13 @@ class TileContent
 
 		void selected ( ) ; 
 		void unselected ( ) ; 
+		void unselectedComplete ( float * args ) ; 
 
 		bool bSelected ; 
 		float rotation ; 
+
+
+		ofRectangle selectedRect ; 
+
+		float z ; 
 };
